@@ -213,4 +213,19 @@ public class PayStationImplTest {
         assertEquals("Quarters should be 4", 4, coinMap.get("quarters"));
     }
     
+    /*
+    Call to cancel returns a map that does not contain a key for a coin not entered.
+    */
+    @Test
+    public void cancelReturnsMapWOKeyForCoinNotEntered()
+            throws IllegalCoinException{
+        
+        HashMap coinMap;
+        
+        ps.addPayment(5);
+        ps.addPayment(10);
+        coinMap = ps.cancel();
+        
+        assertNull(coinMap.get("quarters"));
+    }
 }
