@@ -60,28 +60,33 @@ public class PayStationImpl implements PayStation {
     }
 
     @Override
-    public HashMap cancel() {
+    public void cancel() {
         reset();
-        return coinMap;
+        clearMap();
     }
+    
     
     private void reset() {
         timeBought = insertedSoFar = 0;
     }
     
-    @Override
-    public HashMap clearMap(){
+    private HashMap clearMap(){
         coinMap.clear();
         return coinMap;
     }
     
     @Override
     public int empty(){
-        //reset();
         return insertedSoFar;
     }
     
+    @Override
     public void emptyReset(){
         reset();
+    }
+    
+    @Override
+    public HashMap getCoinMap() {
+        return coinMap;
     }
 }

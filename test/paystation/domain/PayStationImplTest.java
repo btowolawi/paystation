@@ -185,7 +185,7 @@ public class PayStationImplTest {
         HashMap coinMap;
         
         ps.addPayment(10);
-        coinMap = ps.cancel();
+        coinMap = ps.getCoinMap();
         assertEquals("Size of map should be 1", 1, coinMap.size());
     }
     
@@ -207,7 +207,7 @@ public class PayStationImplTest {
         ps.addPayment(25);
         ps.addPayment(25);
         ps.addPayment(25);
-        coinMap = ps.cancel();
+        coinMap = ps.getCoinMap();
         assertEquals("Nickels should be 3", 3, coinMap.get("nickels"));
         assertEquals("Dimes should be 2", 2, coinMap.get("dimes"));
         assertEquals("Quarters should be 4", 4, coinMap.get("quarters"));
@@ -224,7 +224,7 @@ public class PayStationImplTest {
         
         ps.addPayment(5);
         ps.addPayment(10);
-        coinMap = ps.cancel();
+        coinMap = ps.getCoinMap();
         
         assertNull(coinMap.get("quarters"));
     }
@@ -245,8 +245,8 @@ public class PayStationImplTest {
         ps.addPayment(25);
         ps.addPayment(25);
         
-        coinMap = ps.cancel();
-        coinMap = ps.clearMap();
+        ps.cancel();
+        coinMap = ps.getCoinMap();
         
         assertTrue(coinMap.isEmpty());
     }
@@ -266,7 +266,7 @@ public class PayStationImplTest {
         
         Receipt receipt;
         receipt = ps.buy();
-        coinMap = ps.cancel();
+        coinMap = ps.getCoinMap();
         
         assertTrue(coinMap.isEmpty());
     }
