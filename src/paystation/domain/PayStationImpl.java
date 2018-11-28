@@ -70,6 +70,7 @@ public class PayStationImpl implements PayStation {
     
     @Override
     public HashMap clearMap(){
+        coinMap.clear();
         return coinMap;
     }
     
