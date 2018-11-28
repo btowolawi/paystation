@@ -158,5 +158,18 @@ public class PayStationImplTest {
         assertEquals(5, ps.empty());
     }
     
-    
+    /**
+     * Call to empty resets the total to zero.
+     */
+    @Test
+    public void emptyShouldResetTotalToZero()
+            throws IllegalCoinException{
+        
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.empty();
+        
+        assertEquals("Total should be 0 after empty",
+                0, ps.readDisplay());
+    }
 }
