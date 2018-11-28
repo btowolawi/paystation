@@ -250,4 +250,25 @@ public class PayStationImplTest {
         
         assertTrue(coinMap.isEmpty());
     }
+    
+    
+    /**
+     * Call to buy clears the map.
+     */
+    @Test
+    public void buyShouldClearMap()
+            throws IllegalCoinException{
+        HashMap coinMap ;
+        
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        
+        Receipt receipt;
+        receipt = ps.buy();
+        coinMap = ps.cancel();
+        
+        assertTrue(coinMap.isEmpty());
+    }
+    
 }
