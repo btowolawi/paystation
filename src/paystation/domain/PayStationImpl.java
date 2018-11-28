@@ -1,5 +1,7 @@
 package paystation.domain;
 
+import java.util.HashMap;
+
 /**
  * Implementation of the pay station.
  *
@@ -14,8 +16,10 @@ package paystation.domain;
 public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
-    private int ISFTemp;
     private int timeBought;
+    
+    HashMap coinMap;
+    
 
     @Override
     public void addPayment(int coinValue)
@@ -44,8 +48,9 @@ public class PayStationImpl implements PayStation {
     }
 
     @Override
-    public void cancel() {
+    public HashMap cancel() {
         reset();
+        return coinMap;
     }
     
     private void reset() {

@@ -3,6 +3,7 @@
  */
 package paystation.domain;
 
+import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -173,4 +174,19 @@ public class PayStationImplTest {
         assertEquals("Total should be 0 after empty",
                 0, ps.readDisplay());
     }
+    
+    /**
+     * Call to cancel returns a map containing one coin entered.
+     * @throws paystation.domain.IllegalCoinException
+     */
+    @Test
+    public void cancelShouldReturnMapWithOneCoin()
+            throws IllegalCoinException{
+        HashMap coinMap;
+        
+        ps.addPayment(10);
+        coinMap = ps.cancel();
+        assertEquals("Size of map should be 1", 1, coinMap.size());
+    }
+    
 }
