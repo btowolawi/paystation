@@ -69,6 +69,11 @@ public class PayStationImpl implements PayStation {
     }
     
     @Override
+    public HashMap clearMap(){
+        return coinMap;
+    }
+    
+    @Override
     public int empty(){
         //reset();
         return insertedSoFar;

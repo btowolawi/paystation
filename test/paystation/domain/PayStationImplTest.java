@@ -228,4 +228,26 @@ public class PayStationImplTest {
         
         assertNull(coinMap.get("quarters"));
     }
+    
+    /**
+     * Call to cancel clears the map.
+    */
+    @Test
+    public void cancelShouldClearMap()
+            throws IllegalCoinException{
+        
+        HashMap coinMap;
+        
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.addPayment(25);
+        
+        coinMap = ps.cancel();
+        coinMap = ps.clearMap();
+        
+        assertTrue(coinMap.isEmpty());
+    }
 }
