@@ -14,6 +14,7 @@ package paystation.domain;
 public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
+    private int ISFTemp;
     private int timeBought;
 
     @Override
@@ -53,6 +54,11 @@ public class PayStationImpl implements PayStation {
     
     @Override
     public int empty(){
+        //reset();
         return insertedSoFar;
+    }
+    
+    public void emptyReset(){
+        reset();
     }
 }

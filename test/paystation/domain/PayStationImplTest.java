@@ -168,6 +168,7 @@ public class PayStationImplTest {
         ps.addPayment(10);
         ps.addPayment(10);
         ps.empty();
+        ps.emptyReset();
         
         assertEquals("Total should be 0 after empty",
                 0, ps.readDisplay());

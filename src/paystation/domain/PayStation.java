@@ -44,4 +44,6 @@ public interface PayStation {
     public void cancel();
 
     public int empty();
+    
+    public void emptyReset();
 }
