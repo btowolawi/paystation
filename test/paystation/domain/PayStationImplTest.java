@@ -189,4 +189,28 @@ public class PayStationImplTest {
         assertEquals("Size of map should be 1", 1, coinMap.size());
     }
     
+    /**
+     * Call to cancel returns a map containing a mixture of coins entered.
+     */
+    @Test
+    public void cancelShouldReturnMapWithCoinMixture()
+            throws IllegalCoinException{
+        
+        HashMap coinMap;
+        
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.addPayment(25);
+        ps.addPayment(25);
+        ps.addPayment(25);
+        coinMap = ps.cancel();
+        assertEquals("Nickels should be 3", 3, coinMap.get("nickels"));
+        assertEquals("Dimes should be 2", 2, coinMap.get("dimes"));
+        assertEquals("Quarters should be 4", 4, coinMap.get("quarters"));
+    }
+    
 }
