@@ -18,16 +18,21 @@ public class PayStationImpl implements PayStation {
     private int insertedSoFar;
     private int timeBought;
     
-    HashMap coinMap;
+    private HashMap coinMap = new HashMap<>();
+    
+    private int coins = 0;
     
 
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
         switch (coinValue) {
-            case 5: break;
-            case 10: break;
-            case 25: break;
+            case 5:
+            case 10:
+            case 25: 
+                coins++;
+                coinMap.put("coins", coins);        
+                break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
