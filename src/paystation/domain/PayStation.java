@@ -38,7 +38,7 @@ public interface PayStation {
      *
      * @return a valid parking receipt object.
      */
-    public Receipt buy();
+    public Receipt buy(int TB);
 
     /**
      * Cancel the present transaction. Resets the machine for a new transaction.
@@ -50,4 +50,10 @@ public interface PayStation {
     public void emptyReset();
     
     public HashMap getCoinMap();
+    
+    public int getInsertedSoFar();
+    
+    public int getTimeBought();
+    
+   // public void setTB(int TB);
 }

@@ -39,6 +39,9 @@ public class PayStationImpl implements PayStation {
                 quarters++;
                 coinMap.put("quarters", quarters);
                 break;
+            case 0:
+                buy(timeBought);
+                break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
@@ -51,9 +54,14 @@ public class PayStationImpl implements PayStation {
         return timeBought;
     }
 
+    /*@Override
+    public int readDisplay() {
+        return timeBought;
+    }*/
+    
     @Override
-    public Receipt buy() {
-        Receipt r = new ReceiptImpl(timeBought);
+    public Receipt buy(int TB) {
+        Receipt r = new ReceiptImpl(TB, insertedSoFar);
         reset();
         clearMap();
         return r;
@@ -61,6 +69,7 @@ public class PayStationImpl implements PayStation {
 
     @Override
     public void cancel() {
+        Receipt r = new ReceiptImpl(-1, empty());
         reset();
         clearMap();
     }
@@ -89,4 +98,20 @@ public class PayStationImpl implements PayStation {
     public HashMap getCoinMap() {
         return coinMap;
     }
+    
+    @Override
+    public int getInsertedSoFar(){
+        return insertedSoFar;
+    }
+    @Override
+    public int getTimeBought(){
+        return timeBought;
+    }
+
+
+  /*  @Override
+    public void setTB(int TB){
+        timeBought = TB;
+    }*/
+    
 }
